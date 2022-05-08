@@ -37,8 +37,8 @@ const MainBox = () => {
         }, 1000)
       }
     }
-      // Horizontal Check
-    checkBoxes(Array.from(rowBoxes));
+    // Horizontal Check
+      checkBoxes(Array.from(rowBoxes));
     // Vertical Check
     checkBoxes(Array.from(colBoxes));
     // Cross Check
