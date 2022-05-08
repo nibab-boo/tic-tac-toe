@@ -13,6 +13,8 @@
 .App table td {
   width: 20vmin;
   height: 20vmin;
+  font-size: 10vmin;
+  font-weight: lighter;
   border: 4px solid #797373;
   cursor: pointer;
 }
