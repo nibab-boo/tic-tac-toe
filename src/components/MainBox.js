@@ -21,14 +21,17 @@ const MainBox = () => {
       if (boxes.every(td => td.dataset.turn === `${turn}`)) {
         boxes.forEach((td)=> {td.style.background="green"});
         setTimeout(()=> {
+          const tdes = document.querySelectorAll('td');
           if (window.confirm("Would you like to start a new game?")) {
-            const tdes = document.querySelectorAll('td');
             tdes.forEach(td => {
               td.dataset.turn = "";
               td.textContent = "";
               td.style.background = "initial";
             })
           } else {
+            tdes.forEach(td => {
+              if (!td.dataset.turn) td.dataset.turn = "over";
+            })
             return
           }
         }, 1000)
