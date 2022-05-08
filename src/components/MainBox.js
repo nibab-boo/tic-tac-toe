@@ -3,7 +3,7 @@ import TickRow from './TickRow';
 import { useTurn, useTurnUpdate } from './TurnProvider'
 
 const ClickHandleContext = createContext();
-export const ClickContextCheck = () => {
+export const useClickContextCheck = () => {
   return useContext(ClickHandleContext);
 }
 
@@ -32,13 +32,13 @@ const MainBox = () => {
       // return if e.currentTarget is one of this four box.
       const skipThese= ['1x2', '2x1','2x3', '3x2'];
       if (skipThese.includes(`${row}x${col}`)) return
-      const rightBoxes = [], leftBoxes = [];
+      const rightSlashBoxes = [], leftSlashBoxes = [];
       for (let i = 1; i <= 3; i++ ) {
-        rightBoxes.push(document.querySelector(`[data-row="${i}"][data-col="${i}"]`))
-        leftBoxes.push(document.querySelector(`[data-row="${i}"][data-col="${4 - i}"]`))
+        rightSlashBoxes.push(document.querySelector(`[data-row="${i}"][data-col="${i}"]`))
+        leftSlashBoxes.push(document.querySelector(`[data-row="${i}"][data-col="${4 - i}"]`))
       }
-      checkBoxes(rightBoxes);
-      checkBoxes(leftBoxes);
+      checkBoxes(rightSlashBoxes);
+      checkBoxes(leftSlashBoxes);
     }
     crossCheck();
   }
@@ -56,11 +56,11 @@ const MainBox = () => {
   // Creating rows.
   const rows = [];
   for (let i = 1; i <= 3; i++) {
-    rows.push(<TickRow click={handleClick} key={i} row={i}/>);
+    rows.push(<TickRow key={i} row={i}/>);
   }
 
   return (
-    <ClickHandleContext.Provider>
+    <ClickHandleContext.Provider value={handleClick}>
       <table>
         <tbody>
           { rows }
