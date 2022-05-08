@@ -20,7 +20,18 @@ const MainBox = () => {
     const checkBoxes = (boxes) => {
       if (boxes.every(td => td.dataset.turn === `${turn}`)) {
         boxes.forEach((td)=> {td.style.background="green"});
-        return
+        setTimeout(()=> {
+          if (window.confirm("Would you like to start a new game?")) {
+            const tdes = document.querySelectorAll('td');
+            tdes.forEach(td => {
+              td.dataset.turn = "";
+              td.textContent = "";
+              td.style.background = "initial";
+            })
+          } else {
+            return
+          }
+        }, 1000)
       }
     }
       // Horizontal Check
