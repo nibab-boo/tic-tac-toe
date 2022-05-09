@@ -12,34 +12,31 @@ function App() {
     setIsX(() => !isX)
   }
 
-
+  const checkBoxes = (boxes) => {
+    if (boxes.every(td => td.dataset.turn === `${isX}`)) {
+      boxes.forEach((td)=> {td.style.background="green"});
+      const tdes = document.querySelectorAll('td');
+      tdes.forEach(td => {
+        if (!td.dataset.turn) td.dataset.turn = "over";
+      })
+      setTimeout(()=> {
+        if (window.confirm("Would you like to start a new game?")) {
+          tdes.forEach(td => {
+            td.dataset.turn = "";
+            td.textContent = "";
+            td.style.background = "initial";
+          })
+        }
+      }, 1000)
+    }
+  }
+  
   const checkGame = (row, col) => {
     const rowBoxes = document.querySelectorAll(`[data-row="${row}"`);
     const colBoxes = document.querySelectorAll(`[data-col="${col}"`);
 
-    const checkBoxes = (boxes) => {
-      if (boxes.every(td => td.dataset.turn === `${isX}`)) {
-        boxes.forEach((td)=> {td.style.background="green"});
-        console.log(boxes);
-        setTimeout(()=> {
-          const tdes = document.querySelectorAll('td');
-          if (window.confirm("Would you like to start a new game?")) {
-            tdes.forEach(td => {
-              td.dataset.turn = "";
-              td.textContent = "";
-              td.style.background = "initial";
-            })
-          } else {
-            tdes.forEach(td => {
-              if (!td.dataset.turn) td.dataset.turn = "over";
-            })
-            return
-          }
-        }, 1000)
-      }
-    }
     // Horizontal Check
-      checkBoxes(Array.from(rowBoxes));
+    checkBoxes(Array.from(rowBoxes));
     // Vertical Check
     checkBoxes(Array.from(colBoxes));
     // Cross Check
