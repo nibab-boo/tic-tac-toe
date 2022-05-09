@@ -1,4 +1,4 @@
-import { useClickContextCheck } from './MainBox'
+import { useClickContextCheck } from './../App'
 const TickBox = ({ row, col }) => {
   const handleClick = useClickContextCheck();
   return (
