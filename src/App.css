@@ -1,21 +1,27 @@
 .App {
   text-align: center;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+  flex-direction: column;
   height: 100vh;
-  background-color: #b9b0b0;
+  background-color: #6fa5b1;
+}
+.App h2 span{
+  font-size: 5rem;
+  font-weight: 400;
 }
 .App table {
   border-spacing: 0;
   transform: skewX(-2deg);
+  height: 30vmax;
 }
 .App table td {
   width: 20vmin;
   height: 20vmin;
   font-size: 10vmin;
   font-weight: lighter;
-  border: 4px solid #797373;
+  border: 4px solid #4e6b9f;
   cursor: pointer;
 }
 

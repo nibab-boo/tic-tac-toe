@@ -30,7 +30,7 @@ function App() {
       }, 1000)
     }
   }
-  
+
   const checkGame = (row, col) => {
     const rowBoxes = document.querySelectorAll(`[data-row="${row}"`);
     const colBoxes = document.querySelectorAll(`[data-col="${col}"`);
@@ -77,6 +77,7 @@ function App() {
   return (
     <ClickHandleContext.Provider value={handleClick}>  
       <div className="App">
+      <h2><span>{isX ? "X" : "O"}</span>'s Turn</h2>
         <table>
           <tbody>
             { rows }
